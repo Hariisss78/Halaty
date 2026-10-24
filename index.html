@@ -18,8 +18,8 @@
   header p { margin:6px 0 0; color:var(--muted); }
   .arabic { font-size:1.6rem; color:var(--accent); margin:4px 0 0; }
   .lang { display:flex; gap:8px; justify-content:center; margin:20px 0 8px; }
-  .lang button { background:var(--card); color:var(--fg); border:1px solid var(--line); border-radius:999px; padding:6px 18px; font:inherit; font-size:.95rem; cursor:pointer; }
-  .lang button[aria-pressed="true"] { background:var(--accent); border-color:var(--accent); color:#111; font-weight:600; }
+  .lang select { background:var(--card); color:var(--fg); border:1px solid var(--line); border-radius:999px; padding:8px 18px; font:inherit; font-size:1rem; cursor:pointer; min-width:220px; text-align:center; }
+  .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
   section.lang-block { margin-top:24px; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin-top:18px; }
   h2 { margin:0 0 8px; font-size:1.35rem; }
@@ -42,10 +42,22 @@
   <p>Versets &amp; Azkar &middot; Verses &amp; Azkar</p>
 </header>
 
-<div class="lang" role="group" aria-label="Language">
-  <button type="button" data-lang="fr" aria-pressed="true">Français</button>
-  <button type="button" data-lang="en" aria-pressed="false">English</button>
-  <button type="button" data-lang="ar" aria-pressed="false">العربية</button>
+<div class="lang">
+  <label class="sr-only" for="langSelect">Language</label>
+  <select id="langSelect" aria-label="Language / Langue">
+    <option value="fr">Français</option>
+    <option value="en">English</option>
+    <option value="ar">العربية</option>
+    <option value="de">Deutsch</option>
+    <option value="es">Español</option>
+    <option value="tr">Türkçe</option>
+    <option value="id">Bahasa Indonesia</option>
+    <option value="ms">Bahasa Melayu</option>
+    <option value="el">Ελληνικά</option>
+    <option value="bn">বাংলা</option>
+    <option value="ur">اردو</option>
+    <option value="ta">தமிழ்</option>
+  </select>
 </div>
 
 <!-- ============================ FRANÇAIS ============================ -->
@@ -225,26 +237,563 @@
   </div>
 </section>
 
+
+<!-- ============================ DEUTSCH ============================ -->
+<section class="lang-block" data-block="de" lang="de" dir="ltr" hidden>
+
+  <div class="card" id="support-de">
+    <h2>Support</h2>
+    <p>Halaty bietet Koranverse, nach Lebenssituationen geordnet, sowie Morgen- und Abend-Azkar – mit Widgets und Erinnerungen.</p>
+    <p>Eine Frage, ein Fehler, ein Vorschlag oder eine Textkorrektur? Schreib mir:</p>
+    <p><a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a></p>
+    <p class="muted">Ich antworte in der Regel innerhalb weniger Tage. Damit ich ein Problem lösen kann, gib bitte dein iPhone- oder iPad-Modell, die iOS-Version und eine kurze Beschreibung des Vorfalls an.</p>
+
+    <h3>Häufig gestellte Fragen</h3>
+    <p><strong>Wie füge ich das Widget hinzu?</strong><br>
+    Halte den Home-Bildschirm gedrückt, tippe oben auf „+“ und suche nach „Halaty“. Für den Sperrbildschirm: gedrückt halten, „Anpassen“ tippen, dann den Widget-Bereich wählen. Die Schritte findest du auch unter Einstellungen &gt; Widget hinzufügen.</p>
+    <p><strong>Die Azkar-Erinnerungen erscheinen nicht.</strong><br>
+    Prüfe in den Einstellungen, ob „Azkar-Benachrichtigungen“ aktiviert und eine Stadt gewählt ist (oder „Meinen Standort verwenden“ aktiv und in den iOS-Einstellungen erlaubt ist). Stelle außerdem sicher, dass Mitteilungen für Halaty unter iOS-Einstellungen &gt; Mitteilungen erlaubt sind.</p>
+    <p><strong>Wie ändere ich die Sprache oder die arabische Schriftart?</strong><br>
+    Im Tab „Einstellungen“ der App: „App-Sprache“ und „Arabische Schriftart“.</p>
+  </div>
+
+  <div class="card" id="privacy-de">
+    <h2>Datenschutzerklärung</h2>
+    <p class="muted">Zuletzt aktualisiert: 3. Oktober 2026</p>
+    <p>Halaty wurde so entwickelt, dass sie deine Privatsphäre respektiert: <strong>kein Konto, keine Werbung, kein Werbe-Tracking oder Profiling und kein Verkauf von Daten.</strong></p>
+
+    <h3>Was auf deinem Gerät bleibt</h3>
+    <p>Deine Favoriten (Verse und Azkar) und deine Einstellungen (Sprache, Schriftart, Darstellung, gewählte Stadt) werden ausschließlich auf deinem Gerät gespeichert. Wir haben darauf keinen Zugriff.</p>
+
+    <h3>Standort (optional)</h3>
+    <p>Wenn du „Meinen Standort verwenden“ wählst, liest die App deinen Standort nur, solange sie geöffnet ist, um die Zeiten für Fadschr und Asr zu berechnen und deine Azkar-Erinnerungen zu planen. Diese Berechnung erfolgt auf deinem Gerät: Dein Standort wird weder an unsere Server gesendet noch gespeichert. Du kannst auch manuell eine Stadt wählen, ohne deinen Standort zu teilen, und die Berechtigung jederzeit in den iOS-Einstellungen widerrufen.</p>
+
+    <h3>Firebase-Dienste (Google)</h3>
+    <p>Die App nutzt Firebase für zwei Zwecke:</p>
+    <ul>
+      <li><strong>Inhalte:</strong> Cloud Firestore lädt aktuelle Texte herunter (Verse, Azkar, Übersetzungen). Dabei werden keine personenbezogenen Daten gesendet, aber wie bei jeder Internetanfrage kann Google deine IP-Adresse erhalten.</li>
+      <li><strong>Benachrichtigungen:</strong> Firebase Cloud Messaging ermöglicht es uns, dir Benachrichtigungen zu senden, wenn du sie erlaubst. Dazu wird eine anonyme technische Kennung deines Geräts (ein Benachrichtigungs-Token) bei Firebase registriert. Sie ist nicht mit deiner Identität verknüpft.</li>
+    </ul>
+    <p>Diese Dienste werden von Google bereitgestellt und unterliegen dessen eigener Datenschutzerklärung: <a href="https://firebase.google.com/support/privacy" rel="noopener" dir="ltr">firebase.google.com/support/privacy</a>.</p>
+
+    <h3>Anonyme Nutzungsstatistik</h3>
+    <p>Einmal täglich, wenn du die App öffnest, wird in Firebase (Cloud Firestore) eine zufällige, für diese Installation spezifische Kennung gespeichert, zusammen mit dem Datum, der App-Version und dem Gerätetyp (iPhone oder iPad). So können wir nur zählen, wie viele Geräte die App täglich nutzen. Diese Kennung ist nicht mit deinem Namen, deiner E-Mail-Adresse, deinem Standort oder deiner Werbe-ID verknüpft und verschwindet, wenn du die App löschst.</p>
+
+    <h3>Was wir nicht tun</h3>
+    <ul>
+      <li>Die App verlangt kein Konto und keine Identitätsdaten (Name, E-Mail usw.).</li>
+      <li>Keine Werbe- oder Analysetools von Drittanbietern (abgesehen vom oben beschriebenen anonymen Zähler).</li>
+      <li>Es werden keine Daten verkauft oder zu kommerziellen Zwecken weitergegeben.</li>
+    </ul>
+
+    <h3>Kinder</h3>
+    <p>Die App erhebt wissentlich keine personenbezogenen Daten, auch nicht von Kindern.</p>
+
+    <h3>Deine Rechte und Kontakt</h3>
+    <p>Bei Fragen zu dieser Erklärung oder um die Löschung der mit deinem Gerät verknüpften Benachrichtigungsdaten zu beantragen, schreibe an <a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a>. Wenn du die App löschst, werden alle auf deinem Gerät gespeicherten Daten entfernt.</p>
+
+    <h3>Änderungen</h3>
+    <p>Diese Erklärung kann sich ändern; das Datum der letzten Aktualisierung steht oben in diesem Abschnitt.</p>
+  </div>
+</section>
+
+<!-- ============================ ESPAÑOL ============================ -->
+<section class="lang-block" data-block="es" lang="es" dir="ltr" hidden>
+
+  <div class="card" id="support-es">
+    <h2>Asistencia</h2>
+    <p>Halaty ofrece versículos del Corán clasificados por situación de vida, además de los azkar de la mañana y de la tarde, con widgets y recordatorios.</p>
+    <p>¿Una pregunta, un error, una sugerencia o una corrección de texto? Escríbeme:</p>
+    <p><a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a></p>
+    <p class="muted">Suelo responder en unos pocos días. Para ayudarme a resolver un problema, indica el modelo de tu iPhone o iPad, la versión de iOS y una breve descripción de lo ocurrido.</p>
+
+    <h3>Preguntas frecuentes</h3>
+    <p><strong>¿Cómo añado el widget?</strong><br>
+    Mantén pulsada la pantalla de inicio, toca «+» arriba y busca «Halaty». Para la pantalla de bloqueo: mantén pulsado, toca «Personalizar» y luego la zona de widgets. Los pasos también están en Ajustes &gt; Añadir el widget.</p>
+    <p><strong>Los recordatorios de azkar no aparecen.</strong><br>
+    Comprueba en Ajustes que «Notificaciones de Azkar» está activado y que hay una ciudad elegida (o que «Usar mi ubicación» está activado y permitido en los Ajustes de iOS). Comprueba también que las notificaciones están permitidas para Halaty en Ajustes de iOS &gt; Notificaciones.</p>
+    <p><strong>¿Cómo cambio el idioma o la fuente árabe?</strong><br>
+    En la pestaña Ajustes de la app: «Idioma de la aplicación» y «Fuente árabe».</p>
+  </div>
+
+  <div class="card" id="privacy-es">
+    <h2>Política de privacidad</h2>
+    <p class="muted">Última actualización: 3 de octubre de 2026</p>
+    <p>Halaty está diseñada para respetar tu privacidad: <strong>sin cuenta, sin publicidad, sin seguimiento publicitario ni elaboración de perfiles, y sin venta de datos.</strong></p>
+
+    <h3>Lo que se queda en tu dispositivo</h3>
+    <p>Tus favoritos (versículos y azkar) y tus ajustes (idioma, fuente, apariencia, ciudad elegida) se guardan únicamente en tu dispositivo. No tenemos acceso a ellos.</p>
+
+    <h3>Ubicación (opcional)</h3>
+    <p>Si eliges «Usar mi ubicación», la app lee tu ubicación solo mientras está abierta, para calcular los horarios de Fajr y Asr y programar tus recordatorios de azkar. Este cálculo se hace en tu dispositivo: tu ubicación no se envía a nuestros servidores ni se almacena. También puedes elegir una ciudad manualmente, sin compartir tu ubicación, y retirar el permiso en cualquier momento en los Ajustes de iOS.</p>
+
+    <h3>Servicios de Firebase (Google)</h3>
+    <p>La app utiliza Firebase para dos cosas:</p>
+    <ul>
+      <li><strong>Contenido:</strong> Cloud Firestore permite descargar los textos actualizados (versículos, azkar, traducciones). No se envía ningún dato personal para ello, pero, como en cualquier solicitud de internet, Google puede recibir tu dirección IP.</li>
+      <li><strong>Notificaciones:</strong> Firebase Cloud Messaging permite enviarte notificaciones si las autorizas. Para ello, se registra en Firebase un identificador técnico anónimo de tu dispositivo (token de notificación). No está vinculado a tu identidad.</li>
+    </ul>
+    <p>Estos servicios los proporciona Google y están sujetos a su propia política de privacidad: <a href="https://firebase.google.com/support/privacy" rel="noopener" dir="ltr">firebase.google.com/support/privacy</a>.</p>
+
+    <h3>Estadísticas de uso anónimas</h3>
+    <p>Una vez al día, cuando abres la app, esta registra en Firebase (Cloud Firestore) un identificador aleatorio propio de esta instalación, la fecha, la versión de la app y el tipo de dispositivo (iPhone o iPad). Esto solo nos permite contar cuántos dispositivos usan la app cada día. Este identificador no está vinculado a tu nombre, tu correo electrónico, tu ubicación ni tu identificador publicitario, y desaparece cuando eliminas la app.</p>
+
+    <h3>Lo que no hacemos</h3>
+    <ul>
+      <li>La app no solicita ninguna cuenta ni datos de identidad (nombre, correo electrónico, etc.).</li>
+      <li>Ninguna herramienta de publicidad o de análisis de terceros (aparte del contador anónimo descrito arriba).</li>
+      <li>Ningún dato se vende ni se comparte con fines comerciales.</li>
+    </ul>
+
+    <h3>Menores</h3>
+    <p>La app no recopila a sabiendas ningún dato personal, tampoco de menores.</p>
+
+    <h3>Tus derechos y contacto</h3>
+    <p>Para cualquier pregunta sobre esta política o para solicitar la eliminación de los datos de notificación asociados a tu dispositivo, escribe a <a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a>. Al eliminar la app se borran todos los datos almacenados en tu dispositivo.</p>
+
+    <h3>Cambios</h3>
+    <p>Esta política puede cambiar; la fecha de la última actualización figura al principio de esta sección.</p>
+  </div>
+</section>
+
+<!-- ============================ TÜRKÇE ============================ -->
+<section class="lang-block" data-block="tr" lang="tr" dir="ltr" hidden>
+
+  <div class="card" id="support-tr">
+    <h2>Destek</h2>
+    <p>Halaty, yaşam durumlarına göre sınıflandırılmış Kur'an ayetleri ile sabah ve akşam azkarını; widget'lar ve hatırlatıcılarla birlikte sunar.</p>
+    <p>Bir sorun, hata, öneri ya da metin düzeltmesi mi var? Bana yaz:</p>
+    <p><a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a></p>
+    <p class="muted">Genellikle birkaç gün içinde yanıt veririm. Bir sorunu çözmeme yardımcı olmak için iPhone veya iPad modelini, iOS sürümünü ve olanların kısa bir açıklamasını belirt.</p>
+
+    <h3>Sık sorulan sorular</h3>
+    <p><strong>Widget'ı nasıl eklerim?</strong><br>
+    Ana ekrana uzun bas, üstteki “+” simgesine dokun ve “Halaty” ara. Kilit ekranı için: uzun bas, “Özelleştir”e dokun, ardından widget alanını seç. Adımlar ayrıca Ayarlar &gt; Widget'ı Ekle bölümünde de var.</p>
+    <p><strong>Azkar hatırlatıcıları görünmüyor.</strong><br>
+    Ayarlar'da “Azkar Bildirimleri”nin açık olduğunu ve bir şehir seçildiğini (veya “Konumumu kullan”ın açık ve iOS Ayarları'nda izinli olduğunu) kontrol et. Ayrıca iOS Ayarlar &gt; Bildirimler bölümünde Halaty için bildirimlere izin verildiğinden emin ol.</p>
+    <p><strong>Dili veya Arapça yazı tipini nasıl değiştiririm?</strong><br>
+    Uygulamanın Ayarlar sekmesinde: “Uygulama Dili” ve “Arapça Yazı Tipi”.</p>
+  </div>
+
+  <div class="card" id="privacy-tr">
+    <h2>Gizlilik Politikası</h2>
+    <p class="muted">Son güncelleme: 3 Ekim 2026</p>
+    <p>Halaty gizliliğine saygı gösterecek şekilde tasarlandı: <strong>hesap yok, reklam yok, reklam amaçlı izleme veya profilleme yok ve veri satışı yok.</strong></p>
+
+    <h3>Cihazında kalanlar</h3>
+    <p>Favorilerin (ayetler ve azkar) ve ayarların (dil, yazı tipi, görünüm, seçilen şehir) yalnızca cihazında saklanır. Bunlara erişimimiz yoktur.</p>
+
+    <h3>Konum (isteğe bağlı)</h3>
+    <p>“Konumumu kullan”ı seçersen uygulama, Fecr ve İkindi vakitlerini hesaplamak ve azkar hatırlatıcılarını planlamak için konumunu yalnızca açıkken okur. Bu hesaplama cihazında yapılır: konumun sunucularımıza gönderilmez ve saklanmaz. Konumunu paylaşmadan elle bir şehir de seçebilir, izni istediğin zaman iOS Ayarları'ndan geri alabilirsin.</p>
+
+    <h3>Firebase hizmetleri (Google)</h3>
+    <p>Uygulama Firebase'i iki amaçla kullanır:</p>
+    <ul>
+      <li><strong>İçerik:</strong> Cloud Firestore, güncel metinlerin (ayetler, azkar, çeviriler) indirilmesini sağlar. Bu kapsamda hiçbir kişisel veri gönderilmez; ancak her internet isteğinde olduğu gibi Google IP adresini alabilir.</li>
+      <li><strong>Bildirimler:</strong> Firebase Cloud Messaging, izin verirsen sana bildirim göndermemizi sağlar. Bunun için cihazının anonim bir teknik tanımlayıcısı (bildirim belirteci) Firebase'e kaydedilir. Kimliğinle ilişkilendirilmez.</li>
+    </ul>
+    <p>Bu hizmetler Google tarafından sağlanır ve kendi gizlilik politikasına tabidir: <a href="https://firebase.google.com/support/privacy" rel="noopener" dir="ltr">firebase.google.com/support/privacy</a>.</p>
+
+    <h3>Anonim kullanım istatistikleri</h3>
+    <p>Günde bir kez, uygulamayı açtığında, uygulama Firebase'e (Cloud Firestore) bu kuruluma özgü rastgele bir tanımlayıcıyı, tarihi, uygulama sürümünü ve cihaz türünü (iPhone veya iPad) kaydeder. Bu yalnızca uygulamayı günde kaç cihazın kullandığını saymamızı sağlar. Bu tanımlayıcı adınla, e-postanla, konumunla veya reklam tanımlayıcınla ilişkilendirilmez ve uygulamayı sildiğinde ortadan kalkar.</p>
+
+    <h3>Yapmadıklarımız</h3>
+    <ul>
+      <li>Uygulama hiçbir hesap veya kimlik bilgisi (ad, e-posta vb.) istemez.</li>
+      <li>Üçüncü taraf reklam veya analiz araçları yoktur (yukarıda açıklanan anonim sayaç hariç).</li>
+      <li>Hiçbir veri satılmaz veya ticari amaçlarla paylaşılmaz.</li>
+    </ul>
+
+    <h3>Çocuklar</h3>
+    <p>Uygulama, çocuklar dahil, bilerek hiçbir kişisel veri toplamaz.</p>
+
+    <h3>Haklarının ve iletişim</h3>
+    <p>Bu politika hakkında bir sorun olursa veya cihazınla ilişkili bildirim verilerinin silinmesini istersen <a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a> adresine yaz. Uygulamayı silmek, cihazında saklanan tüm verileri siler.</p>
+
+    <h3>Değişiklikler</h3>
+    <p>Bu politika değişebilir; son güncelleme tarihi bu bölümün en üstünde belirtilir.</p>
+  </div>
+</section>
+
+<!-- ============================ BAHASA INDONESIA ============================ -->
+<section class="lang-block" data-block="id" lang="id" dir="ltr" hidden>
+
+  <div class="card" id="support-id">
+    <h2>Dukungan</h2>
+    <p>Halaty menyajikan ayat-ayat Al-Qur'an yang dikelompokkan menurut situasi kehidupan, serta azkar pagi dan petang, lengkap dengan widget dan pengingat.</p>
+    <p>Ada pertanyaan, bug, saran, atau koreksi teks? Hubungi saya:</p>
+    <p><a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a></p>
+    <p class="muted">Saya biasanya membalas dalam beberapa hari. Agar saya bisa membantu menyelesaikan masalah, sebutkan model iPhone atau iPad Anda, versi iOS, dan deskripsi singkat tentang apa yang terjadi.</p>
+
+    <h3>Pertanyaan yang sering diajukan</h3>
+    <p><strong>Bagaimana cara menambahkan widget?</strong><br>
+    Tekan lama layar Utama, ketuk “+” di bagian atas, lalu cari “Halaty”. Untuk layar kunci: tekan lama, ketuk “Ubah”, lalu area widget. Langkahnya juga ada di Pengaturan &gt; Tambahkan Widget.</p>
+    <p><strong>Pengingat azkar tidak muncul.</strong><br>
+    Periksa di Pengaturan bahwa “Pemberitahuan Azkar” aktif dan sebuah kota sudah dipilih (atau “Gunakan lokasi saya” aktif dan diizinkan di Pengaturan iOS). Pastikan juga notifikasi diizinkan untuk Halaty di Pengaturan iOS &gt; Notifikasi.</p>
+    <p><strong>Bagaimana cara mengganti bahasa atau font Arab?</strong><br>
+    Di tab Pengaturan aplikasi: “Bahasa Aplikasi” dan “Font Arab”.</p>
+  </div>
+
+  <div class="card" id="privacy-id">
+    <h2>Kebijakan Privasi</h2>
+    <p class="muted">Terakhir diperbarui: 3 Oktober 2026</p>
+    <p>Halaty dibuat untuk menghormati privasi Anda: <strong>tanpa akun, tanpa iklan, tanpa pelacakan iklan atau pembuatan profil, dan tanpa penjualan data.</strong></p>
+
+    <h3>Yang tetap ada di perangkat Anda</h3>
+    <p>Favorit Anda (ayat dan azkar) serta pengaturan Anda (bahasa, font, tampilan, kota yang dipilih) hanya disimpan di perangkat Anda. Kami tidak memiliki akses ke data tersebut.</p>
+
+    <h3>Lokasi (opsional)</h3>
+    <p>Jika Anda memilih “Gunakan lokasi saya”, aplikasi hanya membaca lokasi Anda saat aplikasi dibuka, untuk menghitung waktu Subuh dan Asar serta menjadwalkan pengingat azkar. Perhitungan ini dilakukan di perangkat Anda: lokasi Anda tidak dikirim ke server kami dan tidak disimpan. Anda juga dapat memilih kota secara manual tanpa membagikan lokasi, dan mencabut izin kapan saja di Pengaturan iOS.</p>
+
+    <h3>Layanan Firebase (Google)</h3>
+    <p>Aplikasi menggunakan Firebase untuk dua hal:</p>
+    <ul>
+      <li><strong>Konten:</strong> Cloud Firestore memungkinkan pengunduhan teks terbaru (ayat, azkar, terjemahan). Tidak ada data pribadi yang dikirim untuk keperluan ini, tetapi seperti pada setiap permintaan internet, Google dapat menerima alamat IP Anda.</li>
+      <li><strong>Notifikasi:</strong> Firebase Cloud Messaging memungkinkan kami mengirim notifikasi kepada Anda jika Anda mengizinkannya. Untuk itu, pengenal teknis anonim dari perangkat Anda (token notifikasi) didaftarkan di Firebase. Pengenal ini tidak terkait dengan identitas Anda.</li>
+    </ul>
+    <p>Layanan ini disediakan oleh Google dan tunduk pada kebijakan privasinya sendiri: <a href="https://firebase.google.com/support/privacy" rel="noopener" dir="ltr">firebase.google.com/support/privacy</a>.</p>
+
+    <h3>Statistik penggunaan anonim</h3>
+    <p>Sekali sehari, saat Anda membuka aplikasi, aplikasi mencatat di Firebase (Cloud Firestore) sebuah pengenal acak yang khusus untuk instalasi ini, tanggal, versi aplikasi, dan jenis perangkat (iPhone atau iPad). Ini hanya memungkinkan kami menghitung berapa banyak perangkat yang menggunakan aplikasi setiap hari. Pengenal ini tidak terkait dengan nama, email, lokasi, atau pengenal iklan Anda, dan akan hilang saat Anda menghapus aplikasi.</p>
+
+    <h3>Yang tidak kami lakukan</h3>
+    <ul>
+      <li>Aplikasi tidak meminta akun atau data identitas apa pun (nama, email, dll.).</li>
+      <li>Tidak ada alat iklan atau analitik pihak ketiga (selain penghitung anonim yang dijelaskan di atas).</li>
+      <li>Tidak ada data yang dijual atau dibagikan untuk tujuan komersial.</li>
+    </ul>
+
+    <h3>Anak-anak</h3>
+    <p>Aplikasi ini tidak dengan sengaja mengumpulkan data pribadi apa pun, termasuk dari anak-anak.</p>
+
+    <h3>Hak Anda dan kontak</h3>
+    <p>Untuk pertanyaan apa pun tentang kebijakan ini, atau untuk meminta penghapusan data notifikasi yang terkait dengan perangkat Anda, kirim email ke <a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a>. Menghapus aplikasi akan menghapus semua data yang tersimpan di perangkat Anda.</p>
+
+    <h3>Perubahan</h3>
+    <p>Kebijakan ini dapat berubah; tanggal pembaruan terakhir tercantum di bagian atas bagian ini.</p>
+  </div>
+</section>
+
+<!-- ============================ BAHASA MELAYU ============================ -->
+<section class="lang-block" data-block="ms" lang="ms" dir="ltr" hidden>
+
+  <div class="card" id="support-ms">
+    <h2>Sokongan</h2>
+    <p>Halaty menyediakan ayat-ayat Al-Quran yang dikelaskan mengikut situasi kehidupan, serta azkar pagi dan petang, lengkap dengan widget dan peringatan.</p>
+    <p>Ada soalan, pepijat, cadangan atau pembetulan teks? Hubungi saya:</p>
+    <p><a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a></p>
+    <p class="muted">Saya biasanya membalas dalam beberapa hari. Untuk membantu saya menyelesaikan masalah, nyatakan model iPhone atau iPad anda, versi iOS dan penerangan ringkas tentang apa yang berlaku.</p>
+
+    <h3>Soalan lazim</h3>
+    <p><strong>Bagaimana untuk menambah widget?</strong><br>
+    Tekan lama skrin Utama, ketik “+” di bahagian atas, kemudian cari “Halaty”. Untuk skrin kunci: tekan lama, ketik “Suaikan”, kemudian kawasan widget. Langkah-langkahnya juga terdapat dalam Tetapan &gt; Tambah Widget.</p>
+    <p><strong>Peringatan azkar tidak dipaparkan.</strong><br>
+    Semak dalam Tetapan bahawa “Notifikasi Azkar” dihidupkan dan sebuah bandar telah dipilih (atau “Gunakan lokasi saya” dihidupkan dan dibenarkan dalam Tetapan iOS). Pastikan juga notifikasi dibenarkan untuk Halaty dalam Tetapan iOS &gt; Pemberitahuan.</p>
+    <p><strong>Bagaimana untuk menukar bahasa atau font Arab?</strong><br>
+    Dalam tab Tetapan aplikasi: “Bahasa Aplikasi” dan “Font Arab”.</p>
+  </div>
+
+  <div class="card" id="privacy-ms">
+    <h2>Dasar Privasi</h2>
+    <p class="muted">Kemas kini terakhir: 3 Oktober 2026</p>
+    <p>Halaty dibina untuk menghormati privasi anda: <strong>tiada akaun, tiada iklan, tiada penjejakan iklan atau pemprofilan, dan tiada penjualan data.</strong></p>
+
+    <h3>Apa yang kekal pada peranti anda</h3>
+    <p>Kegemaran anda (ayat dan azkar) dan tetapan anda (bahasa, font, penampilan, bandar yang dipilih) disimpan pada peranti anda sahaja. Kami tidak mempunyai akses kepadanya.</p>
+
+    <h3>Lokasi (pilihan)</h3>
+    <p>Jika anda memilih “Gunakan lokasi saya”, aplikasi hanya membaca lokasi anda semasa ia dibuka, untuk mengira waktu Subuh dan Asar serta menjadualkan peringatan azkar anda. Pengiraan ini dilakukan pada peranti anda: lokasi anda tidak dihantar ke pelayan kami dan tidak disimpan. Anda juga boleh memilih bandar secara manual tanpa berkongsi lokasi, dan menarik balik kebenaran pada bila-bila masa dalam Tetapan iOS.</p>
+
+    <h3>Perkhidmatan Firebase (Google)</h3>
+    <p>Aplikasi menggunakan Firebase untuk dua perkara:</p>
+    <ul>
+      <li><strong>Kandungan:</strong> Cloud Firestore membolehkan muat turun teks terkini (ayat, azkar, terjemahan). Tiada data peribadi dihantar untuk tujuan ini, tetapi seperti setiap permintaan internet, Google mungkin menerima alamat IP anda.</li>
+      <li><strong>Notifikasi:</strong> Firebase Cloud Messaging membolehkan kami menghantar notifikasi kepada anda jika anda membenarkannya. Untuk itu, pengecam teknikal tanpa nama bagi peranti anda (token notifikasi) didaftarkan dengan Firebase. Ia tidak dikaitkan dengan identiti anda.</li>
+    </ul>
+    <p>Perkhidmatan ini disediakan oleh Google dan tertakluk kepada dasar privasinya sendiri: <a href="https://firebase.google.com/support/privacy" rel="noopener" dir="ltr">firebase.google.com/support/privacy</a>.</p>
+
+    <h3>Statistik penggunaan tanpa nama</h3>
+    <p>Sekali sehari, apabila anda membuka aplikasi, aplikasi merekodkan dalam Firebase (Cloud Firestore) satu pengecam rawak yang khusus untuk pemasangan ini, tarikh, versi aplikasi dan jenis peranti (iPhone atau iPad). Ini hanya membolehkan kami mengira berapa banyak peranti menggunakan aplikasi setiap hari. Pengecam ini tidak dikaitkan dengan nama, e-mel, lokasi atau pengecam pengiklanan anda, dan akan hilang apabila anda memadam aplikasi.</p>
+
+    <h3>Apa yang kami tidak lakukan</h3>
+    <ul>
+      <li>Aplikasi tidak meminta sebarang akaun atau data identiti (nama, e-mel, dll.).</li>
+      <li>Tiada alat pengiklanan atau analitik pihak ketiga (selain pembilang tanpa nama yang diterangkan di atas).</li>
+      <li>Tiada data dijual atau dikongsi untuk tujuan komersial.</li>
+    </ul>
+
+    <h3>Kanak-kanak</h3>
+    <p>Aplikasi ini tidak dengan sengaja mengumpul sebarang data peribadi, termasuk daripada kanak-kanak.</p>
+
+    <h3>Hak anda dan hubungan</h3>
+    <p>Untuk sebarang soalan tentang dasar ini, atau untuk meminta pemadaman data notifikasi yang dikaitkan dengan peranti anda, e-mel kepada <a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a>. Memadam aplikasi akan membuang semua data yang disimpan pada peranti anda.</p>
+
+    <h3>Perubahan</h3>
+    <p>Dasar ini mungkin berubah; tarikh kemas kini terakhir ditunjukkan di bahagian atas seksyen ini.</p>
+  </div>
+</section>
+
+<!-- ============================ ΕΛΛΗΝΙΚΆ ============================ -->
+<section class="lang-block" data-block="el" lang="el" dir="ltr" hidden>
+
+  <div class="card" id="support-el">
+    <h2>Υποστήριξη</h2>
+    <p>Το Halaty προσφέρει εδάφια του Κορανίου ταξινομημένα ανά περίσταση της ζωής, καθώς και τα azkar του πρωινού και του απογεύματος, με widgets και υπενθυμίσεις.</p>
+    <p>Έχεις μια ερώτηση, ένα σφάλμα, μια πρόταση ή μια διόρθωση κειμένου; Γράψε μου:</p>
+    <p><a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a></p>
+    <p class="muted">Συνήθως απαντώ μέσα σε λίγες ημέρες. Για να με βοηθήσεις να λύσω ένα πρόβλημα, γράψε το μοντέλο του iPhone ή του iPad σου, την έκδοση του iOS και μια σύντομη περιγραφή του τι συνέβη.</p>
+
+    <h3>Συχνές ερωτήσεις</h3>
+    <p><strong>Πώς προσθέτω το widget;</strong><br>
+    Πάτα παρατεταμένα στην Αρχική οθόνη, πάτα «+» στο επάνω μέρος και αναζήτησε «Halaty». Για την οθόνη κλειδώματος: πάτα παρατεταμένα, πάτα «Προσαρμογή» και μετά την περιοχή των widgets. Τα βήματα υπάρχουν και στις Ρυθμίσεις &gt; Προσθήκη του widget.</p>
+    <p><strong>Οι υπενθυμίσεις azkar δεν εμφανίζονται.</strong><br>
+    Έλεγξε στις Ρυθμίσεις ότι οι «Ειδοποιήσεις Azkar» είναι ενεργές και ότι έχει επιλεγεί μια πόλη (ή ότι η «Χρήση της τοποθεσίας μου» είναι ενεργή και επιτρέπεται στις Ρυθμίσεις του iOS). Βεβαιώσου επίσης ότι οι ειδοποιήσεις επιτρέπονται για το Halaty στις Ρυθμίσεις iOS &gt; Ειδοποιήσεις.</p>
+    <p><strong>Πώς αλλάζω τη γλώσσα ή την αραβική γραμματοσειρά;</strong><br>
+    Στην καρτέλα Ρυθμίσεις της εφαρμογής: «Γλώσσα εφαρμογής» και «Αραβική γραμματοσειρά».</p>
+  </div>
+
+  <div class="card" id="privacy-el">
+    <h2>Πολιτική απορρήτου</h2>
+    <p class="muted">Τελευταία ενημέρωση: 3 Οκτωβρίου 2026</p>
+    <p>Το Halaty έχει σχεδιαστεί για να σέβεται το απόρρητό σου: <strong>χωρίς λογαριασμό, χωρίς διαφημίσεις, χωρίς διαφημιστική παρακολούθηση ή κατάρτιση προφίλ και χωρίς πώληση δεδομένων.</strong></p>
+
+    <h3>Τι παραμένει στη συσκευή σου</h3>
+    <p>Τα αγαπημένα σου (εδάφια και azkar) και οι ρυθμίσεις σου (γλώσσα, γραμματοσειρά, εμφάνιση, επιλεγμένη πόλη) αποθηκεύονται αποκλειστικά στη συσκευή σου. Δεν έχουμε πρόσβαση σε αυτά.</p>
+
+    <h3>Τοποθεσία (προαιρετική)</h3>
+    <p>Αν επιλέξεις «Χρήση της τοποθεσίας μου», η εφαρμογή διαβάζει την τοποθεσία σου μόνο όσο είναι ανοιχτή, για να υπολογίσει τις ώρες του Φατζρ και του Ασρ και να προγραμματίσει τις υπενθυμίσεις azkar. Ο υπολογισμός γίνεται στη συσκευή σου: η τοποθεσία σου ούτε αποστέλλεται στους διακομιστές μας ούτε αποθηκεύεται. Μπορείς επίσης να επιλέξεις μια πόλη χειροκίνητα χωρίς να μοιραστείς την τοποθεσία σου και να ανακαλέσεις την άδεια οποιαδήποτε στιγμή στις Ρυθμίσεις του iOS.</p>
+
+    <h3>Υπηρεσίες Firebase (Google)</h3>
+    <p>Η εφαρμογή χρησιμοποιεί το Firebase για δύο πράγματα:</p>
+    <ul>
+      <li><strong>Περιεχόμενο:</strong> Το Cloud Firestore επιτρέπει τη λήψη ενημερωμένων κειμένων (εδάφια, azkar, μεταφράσεις). Δεν αποστέλλονται προσωπικά δεδομένα, αλλά όπως σε κάθε αίτημα στο διαδίκτυο, η Google μπορεί να λάβει τη διεύθυνση IP σου.</li>
+      <li><strong>Ειδοποιήσεις:</strong> Το Firebase Cloud Messaging μας επιτρέπει να σου στέλνουμε ειδοποιήσεις αν τις επιτρέψεις. Για τον σκοπό αυτό, ένα ανώνυμο τεχνικό αναγνωριστικό της συσκευής σου (διακριτικό ειδοποιήσεων) καταχωρίζεται στο Firebase. Δεν συνδέεται με την ταυτότητά σου.</li>
+    </ul>
+    <p>Οι υπηρεσίες αυτές παρέχονται από την Google και διέπονται από τη δική της πολιτική απορρήτου: <a href="https://firebase.google.com/support/privacy" rel="noopener" dir="ltr">firebase.google.com/support/privacy</a>.</p>
+
+    <h3>Ανώνυμα στατιστικά χρήσης</h3>
+    <p>Μία φορά την ημέρα, όταν ανοίγεις την εφαρμογή, καταγράφει στο Firebase (Cloud Firestore) ένα τυχαίο αναγνωριστικό που αφορά αυτή την εγκατάσταση, την ημερομηνία, την έκδοση της εφαρμογής και τον τύπο της συσκευής (iPhone ή iPad). Αυτό μας επιτρέπει μόνο να μετράμε πόσες συσκευές χρησιμοποιούν την εφαρμογή κάθε ημέρα. Το αναγνωριστικό αυτό δεν συνδέεται με το όνομά σου, το email σου, την τοποθεσία σου ή το διαφημιστικό σου αναγνωριστικό και εξαφανίζεται όταν διαγράψεις την εφαρμογή.</p>
+
+    <h3>Τι δεν κάνουμε</h3>
+    <ul>
+      <li>Η εφαρμογή δεν ζητά λογαριασμό ούτε στοιχεία ταυτότητας (όνομα, email κ.λπ.).</li>
+      <li>Κανένα εργαλείο διαφήμισης ή ανάλυσης τρίτων (εκτός από τον ανώνυμο μετρητή που περιγράφεται παραπάνω).</li>
+      <li>Κανένα δεδομένο δεν πωλείται ούτε κοινοποιείται για εμπορικούς σκοπούς.</li>
+    </ul>
+
+    <h3>Παιδιά</h3>
+    <p>Η εφαρμογή δεν συλλέγει εν γνώσει της προσωπικά δεδομένα, ούτε από παιδιά.</p>
+
+    <h3>Τα δικαιώματά σου και επικοινωνία</h3>
+    <p>Για οποιαδήποτε ερώτηση σχετικά με την πολιτική αυτή ή για να ζητήσεις τη διαγραφή των δεδομένων ειδοποιήσεων που συνδέονται με τη συσκευή σου, γράψε στο <a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a>. Η διαγραφή της εφαρμογής αφαιρεί όλα τα δεδομένα που είναι αποθηκευμένα στη συσκευή σου.</p>
+
+    <h3>Αλλαγές</h3>
+    <p>Η πολιτική αυτή μπορεί να αλλάξει· η ημερομηνία τελευταίας ενημέρωσης αναγράφεται στην αρχή αυτής της ενότητας.</p>
+  </div>
+</section>
+
+<!-- ============================ বাংলা ============================ -->
+<section class="lang-block" data-block="bn" lang="bn" dir="ltr" hidden>
+
+  <div class="card" id="support-bn">
+    <h2>সহায়তা</h2>
+    <p>Halaty জীবনের পরিস্থিতি অনুযায়ী সাজানো কুরআনের আয়াত এবং সকাল ও সন্ধ্যার আযকার দেয়, সঙ্গে আছে উইজেট ও রিমাইন্ডার।</p>
+    <p>কোনো প্রশ্ন, বাগ, পরামর্শ বা লেখা সংশোধনের কিছু আছে? আমাকে লিখুন:</p>
+    <p><a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a></p>
+    <p class="muted">আমি সাধারণত কয়েক দিনের মধ্যে উত্তর দিই। সমস্যা সমাধানে সাহায্য করতে আপনার iPhone বা iPad-এর মডেল, iOS সংস্করণ এবং কী ঘটেছে তার সংক্ষিপ্ত বিবরণ জানান।</p>
+
+    <h3>সাধারণ প্রশ্ন</h3>
+    <p><strong>উইজেট কীভাবে যোগ করব?</strong><br>
+    হোম স্ক্রিনে দীর্ঘক্ষণ চেপে ধরুন, উপরে “+” চাপুন, তারপর “Halaty” খুঁজুন। লক স্ক্রিনের জন্য: দীর্ঘক্ষণ চেপে ধরুন, “কাস্টমাইজ” চাপুন, তারপর উইজেটের অংশটি বেছে নিন। ধাপগুলো সেটিংস &gt; উইজেট যোগ করুন-এও আছে।</p>
+    <p><strong>আযকারের রিমাইন্ডার দেখা যাচ্ছে না।</strong><br>
+    সেটিংসে দেখুন “আযকার বিজ্ঞপ্তি” চালু আছে কি না এবং একটি শহর বেছে নেওয়া আছে কি না (অথবা “আমার অবস্থান ব্যবহার করুন” চালু এবং iOS সেটিংসে অনুমোদিত কি না)। এছাড়া iOS সেটিংস &gt; বিজ্ঞপ্তি-তে Halaty-র জন্য বিজ্ঞপ্তি অনুমোদিত কি না নিশ্চিত করুন।</p>
+    <p><strong>ভাষা বা আরবি ফন্ট কীভাবে বদলাব?</strong><br>
+    অ্যাপের সেটিংস ট্যাবে: “অ্যাপের ভাষা” এবং “আরবি ফন্ট”।</p>
+  </div>
+
+  <div class="card" id="privacy-bn">
+    <h2>গোপনীয়তা নীতি</h2>
+    <p class="muted">সর্বশেষ হালনাগাদ: ৩ অক্টোবর ২০২৬</p>
+    <p>Halaty আপনার গোপনীয়তাকে সম্মান করে তৈরি: <strong>কোনো অ্যাকাউন্ট নেই, বিজ্ঞাপন নেই, বিজ্ঞাপনভিত্তিক ট্র্যাকিং বা প্রোফাইলিং নেই এবং ডেটা বিক্রি নেই।</strong></p>
+
+    <h3>যা আপনার ডিভাইসেই থাকে</h3>
+    <p>আপনার প্রিয় তালিকা (আয়াত ও আযকার) এবং সেটিংস (ভাষা, ফন্ট, চেহারা, বেছে নেওয়া শহর) শুধু আপনার ডিভাইসে সংরক্ষিত থাকে। এগুলোতে আমাদের কোনো প্রবেশাধিকার নেই।</p>
+
+    <h3>অবস্থান (ঐচ্ছিক)</h3>
+    <p>আপনি “আমার অবস্থান ব্যবহার করুন” বেছে নিলে অ্যাপ শুধু খোলা থাকা অবস্থায় আপনার অবস্থান পড়ে, ফজর ও আসরের সময় হিসাব করতে এবং আযকারের রিমাইন্ডার নির্ধারণ করতে। এই হিসাব আপনার ডিভাইসেই হয়: আপনার অবস্থান আমাদের সার্ভারে পাঠানো বা সংরক্ষণ করা হয় না। অবস্থান শেয়ার না করে হাতে একটি শহরও বেছে নিতে পারেন, এবং যেকোনো সময় iOS সেটিংসে অনুমতি প্রত্যাহার করতে পারেন।</p>
+
+    <h3>Firebase পরিষেবা (Google)</h3>
+    <p>অ্যাপটি দুটি কাজে Firebase ব্যবহার করে:</p>
+    <ul>
+      <li><strong>কনটেন্ট:</strong> Cloud Firestore হালনাগাদ লেখা (আয়াত, আযকার, অনুবাদ) ডাউনলোড করতে দেয়। এজন্য কোনো ব্যক্তিগত ডেটা পাঠানো হয় না, তবে যেকোনো ইন্টারনেট অনুরোধের মতো Google আপনার IP ঠিকানা পেতে পারে।</li>
+      <li><strong>বিজ্ঞপ্তি:</strong> আপনি অনুমতি দিলে Firebase Cloud Messaging আমাদের আপনাকে বিজ্ঞপ্তি পাঠাতে দেয়। এজন্য আপনার ডিভাইসের একটি বেনামি প্রযুক্তিগত শনাক্তকারী (বিজ্ঞপ্তি টোকেন) Firebase-এ নিবন্ধিত হয়। এটি আপনার পরিচয়ের সঙ্গে যুক্ত নয়।</li>
+    </ul>
+    <p>এই পরিষেবাগুলো Google প্রদান করে এবং তাদের নিজস্ব গোপনীয়তা নীতির অধীন: <a href="https://firebase.google.com/support/privacy" rel="noopener" dir="ltr">firebase.google.com/support/privacy</a>।</p>
+
+    <h3>বেনামি ব্যবহার-পরিসংখ্যান</h3>
+    <p>দিনে একবার, আপনি অ্যাপ খুললে, অ্যাপটি Firebase-এ (Cloud Firestore) এই ইনস্টলেশনের জন্য নির্দিষ্ট একটি র‍্যান্ডম শনাক্তকারী, তারিখ, অ্যাপের সংস্করণ এবং ডিভাইসের ধরন (iPhone বা iPad) নথিভুক্ত করে। এর ফলে আমরা শুধু গুনতে পারি প্রতিদিন কয়টি ডিভাইস অ্যাপটি ব্যবহার করছে। এই শনাক্তকারী আপনার নাম, ইমেইল, অবস্থান বা বিজ্ঞাপন শনাক্তকারীর সঙ্গে যুক্ত নয়, এবং অ্যাপ মুছে ফেললে এটিও মুছে যায়।</p>
+
+    <h3>আমরা যা করি না</h3>
+    <ul>
+      <li>অ্যাপ কোনো অ্যাকাউন্ট বা পরিচয়ের তথ্য (নাম, ইমেইল ইত্যাদি) চায় না।</li>
+      <li>কোনো তৃতীয় পক্ষের বিজ্ঞাপন বা বিশ্লেষণ টুল নেই (উপরে বর্ণিত বেনামি কাউন্টার ছাড়া)।</li>
+      <li>কোনো ডেটা বিক্রি বা বাণিজ্যিক উদ্দেশ্যে ভাগ করা হয় না।</li>
+    </ul>
+
+    <h3>শিশু</h3>
+    <p>অ্যাপটি জেনেশুনে কোনো ব্যক্তিগত ডেটা সংগ্রহ করে না, শিশুদের কাছ থেকেও নয়।</p>
+
+    <h3>আপনার অধিকার ও যোগাযোগ</h3>
+    <p>এই নীতি নিয়ে কোনো প্রশ্ন থাকলে, বা আপনার ডিভাইসের সঙ্গে যুক্ত বিজ্ঞপ্তি-ডেটা মুছে ফেলার অনুরোধ করতে <a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a> ঠিকানায় লিখুন। অ্যাপ মুছে ফেললে আপনার ডিভাইসে সংরক্ষিত সব ডেটা মুছে যায়।</p>
+
+    <h3>পরিবর্তন</h3>
+    <p>এই নীতি পরিবর্তিত হতে পারে; সর্বশেষ হালনাগাদের তারিখ এই অংশের শুরুতে দেওয়া আছে।</p>
+  </div>
+</section>
+
+<!-- ============================ اردو ============================ -->
+<section class="lang-block" data-block="ur" lang="ur" dir="rtl" hidden>
+
+  <div class="card" id="support-ur">
+    <h2>معاونت</h2>
+    <p>Halaty زندگی کی صورتحال کے مطابق ترتیب دی گئی قرآنی آیات، نیز صبح و شام کے اذکار پیش کرتی ہے، ساتھ ویجیٹس اور یاددہانیاں بھی۔</p>
+    <p>کوئی سوال، خرابی، تجویز یا متن کی درستی؟ مجھے لکھیں:</p>
+    <p><a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a></p>
+    <p class="muted">میں عموماً چند دنوں میں جواب دیتا ہوں۔ مسئلہ حل کرنے میں میری مدد کے لیے اپنے iPhone یا iPad کا ماڈل، iOS ورژن اور جو ہوا اس کی مختصر تفصیل بتائیں۔</p>
+
+    <h3>اکثر پوچھے جانے والے سوالات</h3>
+    <p><strong>ویجیٹ کیسے شامل کروں؟</strong><br>
+    ہوم اسکرین پر دیر تک دبائیں، اوپر “+” پر ٹیپ کریں، پھر “Halaty” تلاش کریں۔ لاک اسکرین کے لیے: دیر تک دبائیں، “حسبِ ضرورت بنائیں” پر ٹیپ کریں، پھر ویجیٹ والا حصہ منتخب کریں۔ یہ مراحل سیٹنگز &gt; ویجیٹ شامل کریں میں بھی موجود ہیں۔</p>
+    <p><strong>اذکار کی یاددہانیاں ظاہر نہیں ہو رہیں۔</strong><br>
+    سیٹنگز میں دیکھیں کہ “اذکار کے نوٹیفیکیشن” آن ہے اور کوئی شہر منتخب ہے (یا “میری لوکیشن استعمال کریں” آن ہے اور iOS سیٹنگز میں اجازت دی گئی ہے)۔ یہ بھی یقینی بنائیں کہ iOS سیٹنگز &gt; نوٹیفیکیشنز میں Halaty کے لیے نوٹیفیکیشنز کی اجازت ہے۔</p>
+    <p><strong>زبان یا عربی فونٹ کیسے بدلوں؟</strong><br>
+    ایپ کے سیٹنگز ٹیب میں: “ایپ کی زبان” اور “عربی فونٹ”۔</p>
+  </div>
+
+  <div class="card" id="privacy-ur">
+    <h2>رازداری کی پالیسی</h2>
+    <p class="muted">آخری تازہ کاری: 3 اکتوبر 2026</p>
+    <p>Halaty آپ کی رازداری کا احترام کرتے ہوئے بنائی گئی ہے: <strong>کوئی اکاؤنٹ نہیں، کوئی اشتہار نہیں، اشتہاری ٹریکنگ یا پروفائلنگ نہیں، اور ڈیٹا کی کوئی فروخت نہیں۔</strong></p>
+
+    <h3>جو آپ کے آلے پر رہتا ہے</h3>
+    <p>آپ کی پسندیدہ فہرست (آیات اور اذکار) اور آپ کی سیٹنگز (زبان، فونٹ، ظاہری شکل، منتخب شہر) صرف آپ کے آلے پر محفوظ ہوتی ہیں۔ ہمیں ان تک کوئی رسائی نہیں۔</p>
+
+    <h3>لوکیشن (اختیاری)</h3>
+    <p>اگر آپ “میری لوکیشن استعمال کریں” منتخب کرتے ہیں تو ایپ آپ کی لوکیشن صرف کھلے ہونے کے دوران پڑھتی ہے، تاکہ فجر اور عصر کے اوقات کا حساب لگا سکے اور اذکار کی یاددہانیاں مقرر کر سکے۔ یہ حساب آپ کے آلے پر ہوتا ہے: آپ کی لوکیشن نہ ہمارے سرورز کو بھیجی جاتی ہے اور نہ محفوظ کی جاتی ہے۔ آپ اپنی لوکیشن شیئر کیے بغیر ہاتھ سے شہر بھی منتخب کر سکتے ہیں، اور کسی بھی وقت iOS سیٹنگز میں اجازت واپس لے سکتے ہیں۔</p>
+
+    <h3>Firebase سروسز (Google)</h3>
+    <p>ایپ Firebase کو دو کاموں کے لیے استعمال کرتی ہے:</p>
+    <ul>
+      <li><strong>مواد:</strong> Cloud Firestore تازہ ترین متن (آیات، اذکار، تراجم) ڈاؤن لوڈ کرنے کی سہولت دیتا ہے۔ اس مقصد کے لیے کوئی ذاتی ڈیٹا نہیں بھیجا جاتا، لیکن ہر انٹرنیٹ درخواست کی طرح Google کو آپ کا IP ایڈریس مل سکتا ہے۔</li>
+      <li><strong>نوٹیفیکیشنز:</strong> اگر آپ اجازت دیں تو Firebase Cloud Messaging ہمیں آپ کو نوٹیفیکیشنز بھیجنے دیتا ہے۔ اس کے لیے آپ کے آلے کی ایک گمنام تکنیکی شناخت (نوٹیفیکیشن ٹوکن) Firebase میں درج کی جاتی ہے۔ یہ آپ کی شناخت سے منسلک نہیں ہوتی۔</li>
+    </ul>
+    <p>یہ سروسز Google فراہم کرتا ہے اور اس کی اپنی رازداری کی پالیسی کے تابع ہیں: <a href="https://firebase.google.com/support/privacy" rel="noopener" dir="ltr">firebase.google.com/support/privacy</a>۔</p>
+
+    <h3>گمنام استعمال کے اعداد و شمار</h3>
+    <p>دن میں ایک بار، جب آپ ایپ کھولتے ہیں، تو ایپ Firebase (Cloud Firestore) میں اس انسٹالیشن کی ایک بے ترتیب شناخت، تاریخ، ایپ کا ورژن اور آلے کی قسم (iPhone یا iPad) درج کرتی ہے۔ اس سے ہم صرف یہ گن سکتے ہیں کہ روزانہ کتنے آلات ایپ استعمال کرتے ہیں۔ یہ شناخت آپ کے نام، ای میل، لوکیشن یا اشتہاری شناخت سے منسلک نہیں ہوتی، اور ایپ حذف کرنے پر ختم ہو جاتی ہے۔</p>
+
+    <h3>جو ہم نہیں کرتے</h3>
+    <ul>
+      <li>ایپ کوئی اکاؤنٹ یا شناختی معلومات (نام، ای میل وغیرہ) نہیں مانگتی۔</li>
+      <li>کوئی تیسرے فریق کا اشتہاری یا تجزیاتی ٹول نہیں (اوپر بیان کیے گئے گمنام کاؤنٹر کے سوا)۔</li>
+      <li>کوئی ڈیٹا فروخت یا تجارتی مقاصد کے لیے شیئر نہیں کیا جاتا۔</li>
+    </ul>
+
+    <h3>بچے</h3>
+    <p>ایپ جان بوجھ کر کوئی ذاتی ڈیٹا جمع نہیں کرتی، بچوں سے بھی نہیں۔</p>
+
+    <h3>آپ کے حقوق اور رابطہ</h3>
+    <p>اس پالیسی کے بارے میں کسی بھی سوال کے لیے، یا اپنے آلے سے منسلک نوٹیفیکیشن ڈیٹا حذف کرنے کی درخواست کے لیے، <a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a> پر لکھیں۔ ایپ حذف کرنے سے آپ کے آلے پر محفوظ تمام ڈیٹا ہٹ جاتا ہے۔</p>
+
+    <h3>تبدیلیاں</h3>
+    <p>یہ پالیسی تبدیل ہو سکتی ہے؛ آخری تازہ کاری کی تاریخ اس حصے کے شروع میں درج ہے۔</p>
+  </div>
+</section>
+
+<!-- ============================ தமிழ் ============================ -->
+<section class="lang-block" data-block="ta" lang="ta" dir="ltr" hidden>
+
+  <div class="card" id="support-ta">
+    <h2>ஆதரவு</h2>
+    <p>Halaty வாழ்க்கைச் சூழல்களின் அடிப்படையில் வகைப்படுத்தப்பட்ட குர்ஆன் வசனங்களையும், காலை மற்றும் மாலை அஸ்கார்களையும், விட்ஜெட்டுகள் மற்றும் நினைவூட்டல்களுடன் வழங்குகிறது.</p>
+    <p>கேள்வி, பிழை, பரிந்துரை அல்லது உரைத் திருத்தம் ஏதேனும் உள்ளதா? எனக்கு எழுதுங்கள்:</p>
+    <p><a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a></p>
+    <p class="muted">நான் பொதுவாக சில நாட்களுக்குள் பதிலளிப்பேன். சிக்கலைத் தீர்க்க உதவ, உங்கள் iPhone அல்லது iPad மாடல், iOS பதிப்பு, என்ன நடந்தது என்பதற்கான சுருக்கமான விளக்கம் ஆகியவற்றைத் தெரிவியுங்கள்.</p>
+
+    <h3>அடிக்கடி கேட்கப்படும் கேள்விகள்</h3>
+    <p><strong>விட்ஜெட்டை எப்படிச் சேர்ப்பது?</strong><br>
+    முகப்புத் திரையை நீண்ட நேரம் அழுத்தி, மேலே “+” ஐத் தட்டி, “Halaty” எனத் தேடுங்கள். பூட்டுத் திரைக்கு: நீண்ட நேரம் அழுத்தி, “தனிப்பயனாக்கு” ஐத் தட்டி, பின்னர் விட்ஜெட் பகுதியைத் தேர்ந்தெடுங்கள். இந்தப் படிகள் அமைப்புகள் &gt; விட்ஜெட்டைச் சேர்க்கவும் என்பதிலும் உள்ளன.</p>
+    <p><strong>அஸ்கார் நினைவூட்டல்கள் தோன்றவில்லை.</strong><br>
+    அமைப்புகளில் “அஸ்கர் அறிவிப்புகள்” இயக்கத்தில் உள்ளதா, ஒரு நகரம் தேர்ந்தெடுக்கப்பட்டுள்ளதா (அல்லது “எனது இருப்பிடத்தைப் பயன்படுத்து” இயக்கத்தில் இருந்து iOS அமைப்புகளில் அனுமதிக்கப்பட்டுள்ளதா) எனச் சரிபாருங்கள். மேலும் iOS அமைப்புகள் &gt; அறிவிப்புகள் இல் Halaty க்கு அறிவிப்புகள் அனுமதிக்கப்பட்டுள்ளதா என்பதையும் உறுதிசெய்யுங்கள்.</p>
+    <p><strong>மொழி அல்லது அரபு எழுத்துருவை எப்படி மாற்றுவது?</strong><br>
+    செயலியின் அமைப்புகள் தத்தலில்: “செயலியின் மொழி” மற்றும் “அரபு எழுத்துரு”.</p>
+  </div>
+
+  <div class="card" id="privacy-ta">
+    <h2>தனியுரிமைக் கொள்கை</h2>
+    <p class="muted">கடைசியாகப் புதுப்பிக்கப்பட்டது: 3 அக்டோபர் 2026</p>
+    <p>Halaty உங்கள் தனியுரிமையை மதிக்கும் வகையில் உருவாக்கப்பட்டது: <strong>கணக்கு இல்லை, விளம்பரங்கள் இல்லை, விளம்பரக் கண்காணிப்பு அல்லது சுயவிவரப்படுத்தல் இல்லை, தரவு விற்பனை இல்லை.</strong></p>
+
+    <h3>உங்கள் சாதனத்திலேயே இருப்பவை</h3>
+    <p>உங்கள் பிடித்தவை (வசனங்கள் மற்றும் அஸ்கார்) மற்றும் அமைப்புகள் (மொழி, எழுத்துரு, தோற்றம், தேர்ந்தெடுத்த நகரம்) உங்கள் சாதனத்தில் மட்டுமே சேமிக்கப்படுகின்றன. அவற்றை அணுகும் வசதி எங்களுக்கு இல்லை.</p>
+
+    <h3>இருப்பிடம் (விருப்பத்திற்குரியது)</h3>
+    <p>“எனது இருப்பிடத்தைப் பயன்படுத்து” ஐத் தேர்ந்தெடுத்தால், ஃபஜ்ர் மற்றும் அஸ்ர் நேரங்களைக் கணக்கிடவும் உங்கள் அஸ்கார் நினைவூட்டல்களைத் திட்டமிடவும், செயலி திறந்திருக்கும்போது மட்டுமே உங்கள் இருப்பிடத்தைப் படிக்கும். இந்தக் கணக்கீடு உங்கள் சாதனத்திலேயே நடைபெறுகிறது: உங்கள் இருப்பிடம் எங்கள் சேவையகங்களுக்கு அனுப்பப்படுவதில்லை, சேமிக்கப்படுவதுமில்லை. இருப்பிடத்தைப் பகிராமல் கைமுறையாக ஒரு நகரத்தையும் தேர்ந்தெடுக்கலாம்; iOS அமைப்புகளில் எப்போது வேண்டுமானாலும் அனுமதியை நீக்கலாம்.</p>
+
+    <h3>Firebase சேவைகள் (Google)</h3>
+    <p>செயலி Firebase ஐ இரண்டு விஷயங்களுக்குப் பயன்படுத்துகிறது:</p>
+    <ul>
+      <li><strong>உள்ளடக்கம்:</strong> Cloud Firestore புதுப்பிக்கப்பட்ட உரைகளை (வசனங்கள், அஸ்கார், மொழிபெயர்ப்புகள்) பதிவிறக்க உதவுகிறது. இதற்காக தனிப்பட்ட தரவு எதுவும் அனுப்பப்படுவதில்லை; ஆனால் எந்த இணையக் கோரிக்கையையும் போலவே Google உங்கள் IP முகவரியைப் பெறலாம்.</li>
+      <li><strong>அறிவிப்புகள்:</strong> நீங்கள் அனுமதித்தால், Firebase Cloud Messaging எங்களை உங்களுக்கு அறிவிப்புகள் அனுப்ப அனுமதிக்கிறது. இதற்காக உங்கள் சாதனத்தின் அநாமதேய தொழில்நுட்ப அடையாளங்காட்டி (அறிவிப்பு டோக்கன்) Firebase இல் பதிவு செய்யப்படுகிறது. அது உங்கள் அடையாளத்துடன் இணைக்கப்படவில்லை.</li>
+    </ul>
+    <p>இந்தச் சேவைகளை Google வழங்குகிறது; அவை அதன் சொந்தத் தனியுரிமைக் கொள்கைக்கு உட்பட்டவை: <a href="https://firebase.google.com/support/privacy" rel="noopener" dir="ltr">firebase.google.com/support/privacy</a>.</p>
+
+    <h3>அநாமதேயப் பயன்பாட்டுப் புள்ளிவிவரங்கள்</h3>
+    <p>ஒரு நாளைக்கு ஒருமுறை, நீங்கள் செயலியைத் திறக்கும்போது, இந்த நிறுவலுக்கே உரிய ஒரு சீரற்ற அடையாளங்காட்டி, தேதி, செயலியின் பதிப்பு, சாதன வகை (iPhone அல்லது iPad) ஆகியவற்றை செயலி Firebase இல் (Cloud Firestore) பதிவு செய்கிறது. இதன் மூலம் தினமும் எத்தனை சாதனங்கள் செயலியைப் பயன்படுத்துகின்றன என்பதை மட்டுமே எங்களால் எண்ண முடிகிறது. இந்த அடையாளங்காட்டி உங்கள் பெயர், மின்னஞ்சல், இருப்பிடம் அல்லது விளம்பர அடையாளங்காட்டியுடன் இணைக்கப்படவில்லை; செயலியை நீக்கும்போது அதுவும் மறைந்துவிடும்.</p>
+
+    <h3>நாங்கள் செய்யாதவை</h3>
+    <ul>
+      <li>செயலி எந்தக் கணக்கையோ அடையாளத் தரவையோ (பெயர், மின்னஞ்சல் போன்றவை) கேட்பதில்லை.</li>
+      <li>மூன்றாம் தரப்பு விளம்பரக் கருவிகளோ பகுப்பாய்வுக் கருவிகளோ இல்லை (மேலே விவரிக்கப்பட்ட அநாமதேயக் கணக்கீட்டைத் தவிர).</li>
+      <li>எந்தத் தரவும் விற்கப்படுவதில்லை அல்லது வணிக நோக்கங்களுக்காகப் பகிரப்படுவதில்லை.</li>
+    </ul>
+
+    <h3>குழந்தைகள்</h3>
+    <p>குழந்தைகளிடமிருந்து உட்பட, செயலி தெரிந்தே எந்தத் தனிப்பட்ட தரவையும் சேகரிப்பதில்லை.</p>
+
+    <h3>உங்கள் உரிமைகள் மற்றும் தொடர்பு</h3>
+    <p>இந்தக் கொள்கை பற்றிய எந்தக் கேள்விக்கும், அல்லது உங்கள் சாதனத்துடன் இணைக்கப்பட்ட அறிவிப்புத் தரவை நீக்கக் கோரவும், <a href="mailto:haris.zorgati@icloud.com" dir="ltr">haris.zorgati@icloud.com</a> க்கு மின்னஞ்சல் அனுப்புங்கள். செயலியை நீக்கினால் உங்கள் சாதனத்தில் சேமிக்கப்பட்ட அனைத்துத் தரவும் நீக்கப்படும்.</p>
+
+    <h3>மாற்றங்கள்</h3>
+    <p>இந்தக் கொள்கை மாறலாம்; கடைசியாகப் புதுப்பிக்கப்பட்ட தேதி இந்தப் பகுதியின் தொடக்கத்தில் காட்டப்பட்டுள்ளது.</p>
+  </div>
+</section>
+
 <footer>&copy; 2026 Halaty</footer>
 </div>
 
 <script>
   (function () {
-    var buttons = document.querySelectorAll('.lang button');
+    var select = document.getElementById('langSelect');
     var blocks = document.querySelectorAll('[data-block]');
+    var codes = ['fr', 'en', 'ar', 'de', 'es', 'tr', 'id', 'ms', 'el', 'bn', 'ur', 'ta'];
     function show(lang) {
       blocks.forEach(function (b) { b.hidden = b.getAttribute('data-block') !== lang; });
-      buttons.forEach(function (btn) { btn.setAttribute('aria-pressed', String(btn.getAttribute('data-lang') === lang)); });
+      select.value = lang;
       document.documentElement.lang = lang;
-      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.dir = (lang === 'ar' || lang === 'ur') ? 'rtl' : 'ltr';
     }
-    buttons.forEach(function (btn) {
-      btn.addEventListener('click', function () { show(btn.getAttribute('data-lang')); });
-    });
-    var nav = (navigator.language || 'fr').toLowerCase();
-    var wanted = (location.hash.indexOf('-ar') > -1) ? 'ar'
-      : (location.hash.indexOf('-en') > -1) ? 'en'
-      : (nav.indexOf('fr') === 0 ? 'fr' : (nav.indexOf('ar') === 0 ? 'ar' : 'en'));
+    select.addEventListener('change', function () { show(select.value); });
+    var wanted;
+    var m = /^#(?:privacy|support)-([a-z]{2})$/.exec(location.hash);
+    if (m && codes.indexOf(m[1]) > -1) {
+      wanted = m[1];
+    } else if (location.hash === '#privacy' || location.hash === '#support') {
+      wanted = 'fr';
+    } else {
+      var nav = (navigator.language || 'fr').toLowerCase().slice(0, 2);
+      wanted = codes.indexOf(nav) > -1 ? nav : 'en';
+    }
     show(wanted);
     if (location.hash) {
       var el = document.querySelector(location.hash);
